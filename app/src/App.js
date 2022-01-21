@@ -4,11 +4,6 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  //--------------------
-  //----------------------------------------
-  //This block handles the overall simulation timer. The timer counts down as soon as the 'Start Simulation' button is pressed, and the buttom becomes unpressable for the duration.
-  //Additionally, the 'Pause Simulation' button is disabled until the simulation starts, then after starting, it allows the simulation to be paused or resumed at any point.
-  //Finally, the 'Restart Simulation' button sets all related states and variables to their starting values.
   const [totalSimulationTime, setTotalSimulationTime] = useState(120);
   const [timeRemaining, setTimeRemaining] = useState(totalSimulationTime);
   const [simulationStarted, setSimulationStarted] = useState(false);
@@ -47,7 +42,6 @@ function App() {
       let boats = currentBoats.slice();
 
       boats.forEach((boat) => {
-        console.log(boat.timer);
         if (boat.location === "river") {
           boat.timer = boat.timer - 1;
           if (boat.timer <= 0) {
@@ -100,7 +94,7 @@ function App() {
             boat.timer = timeOnWater;
             onWater = onWater + 1;
           } else {
-            console.error(boats);
+            // console.error(boats);
             break;
           }
         }
@@ -109,6 +103,11 @@ function App() {
     });
   }, [timeRemaining, timeToUnload, timeToLoad, timeOnWater, setBoats]);
 
+  //--------------------
+  //----------------------------------------
+  //This block handles the overall simulation timer. The timer counts down as soon as the 'Start Simulation' button is pressed, and the buttom becomes unpressable for the duration.
+  //Additionally, the 'Pause Simulation' button is disabled until the simulation starts, then after starting, it allows the simulation to be paused or resumed at any point.
+  //Finally, the 'Restart Simulation' button sets all related states and variables to their starting values.
   //I chose to use 'useRef' here rather than useState, because it is accessible globally and doesn't refresh on page re-render, meaning that it persists until the interval is done.
   const simulationIntervalRef = useRef();
 

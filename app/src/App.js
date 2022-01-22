@@ -12,7 +12,7 @@ function App() {
   const [timeToUnload, setTimeToUnload] = useState(12);
   const [timeOnWater, setTimeOnWater] = useState(10);
   const [blocksUnloaded, setBlocksUnloaded] = useState(0);
-  const [numberOfBoats, setNumberOfBoats] = useState(20);
+  const [numberOfBoats, setNumberOfBoats] = useState(1);
   const [boats, setBoats] = useState([]);
 
   useEffect(() => {
@@ -147,6 +147,7 @@ function App() {
     setSimulationStarted(false);
     setSimulationPaused(false);
     setBoats([]);
+    setBlocksUnloaded(0);
   };
   //----------------------------------------
   //--------------------
